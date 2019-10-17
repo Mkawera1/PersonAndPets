@@ -6,6 +6,7 @@
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Title</title>
 </head>
+<body>
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 
     <ul class="navbar-nav">
@@ -33,25 +34,32 @@
             <input class="form-control mr-sm-2" name="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
         </form>
-    </ul>
 
+
+    </ul>
 </nav>
 <br/>
-<body>
-<h1>Person Form</h1>
-<form action="#" th:action="@{/processperson}" th:object="${person}" method="post">
-    <input type="hidden" th:field="*{id}" />
-    Name :<input type="text" th:field="*{name}" />
-    <span th:if="${#fields.hasErrors('name')}"
-          th:errors="*{name}"></span><br/>
-
-    Address:<textarea rows="3" th:field="*{address}" />
-    <span th:if="${#fields.hasErrors('address')}"
-          th:errors="*{address}"></span><br/>
+<h1>Search List</h1>
+<table >
+    <tr>
+        <th>Pet Name</th>
+        <th>Pet Type</th>
+        <th>Pet Age</th>
 
 
-    <input type="submit" value="Submit" />
-</form>
+
+
+    </tr>
+    <tr th:each="pet : ${pets}">
+        <td th:text="${pet.name}"></td>
+        <td th:text="${pet.type}"></td>
+        <td th:text="${pet.age}"></td>
+
+
+
+       </tr>
+</table>
+
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
